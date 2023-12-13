@@ -1,3 +1,4 @@
-# Games
+# MiClick's GAMES!
 WELCOME to my Miclick's games!
-Follow for updates, new games coming soon!
+Follow for updates ;)
+New games coming soon!!

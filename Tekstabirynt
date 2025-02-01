@@ -1,0 +1,54 @@
+# Gra: Tekstabirynt
+# Opis: Gracz porusza się po labiryncie, starając się dotrzeć do wyjścia.
+# Instrukcje: Użyj klawiszy 'w' (góra), 'a' (lewo), 's' (dół), 'd' (prawo) do poruszania się.
+# Celem jest dotarcie do dolnego prawego rogu labiryntu bez wpadnięcia na ściany ('#').
+
+def print_maze(maze, player_pos):
+    for i, row in enumerate(maze):
+        line = ""
+        for j, char in enumerate(row):
+            if (i, j) == player_pos:
+                line += "P"
+            else:
+                line += char
+        print(line)
+
+def move_player(pos, direction, maze):
+    x, y = pos
+    if direction == "w":
+        new_pos = (x - 1, y)
+    elif direction == "s":
+        new_pos = (x + 1, y)
+    elif direction == "a":
+        new_pos = (x, y - 1)
+    elif direction == "d":
+        new_pos = (x, y + 1)
+    else:
+        return pos
+
+    if maze[new_pos[0]][new_pos[1]] != "#":
+        return new_pos
+    return pos
+
+def main():
+    maze = [
+        "######",
+        "#    #",
+        "# ## #",
+        "# ## #",
+        "#    #",
+        "######"
+    ]
+
+    player_pos = (1, 1)
+    exit_pos = (4, 4)
+
+    while player_pos != exit_pos:
+        print_maze(maze, player_pos)
+        move = input("Ruch (w/góra, a/lewo, s/dół, d/prawo): ")
+        player_pos = move_player(player_pos, move, maze)
+
+    print("Gratulacje! Dotarłeś do wyjścia!")
+
+if __name__ == "__main__":
+    main()

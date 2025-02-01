@@ -1,0 +1,31 @@
+# Gra: Zgadnij Liczbę!
+# Opis: Komputer losuje liczbę od 1 do 20, a gracz próbuje ją odgadnąć.
+# Instrukcje: Wpisz liczbę i dowiedz się, czy jest za mała, za duża, czy poprawna.
+# Celem gry jest odgadnięcie liczby w jak najmniejszej liczbie prób.
+
+import random
+
+def main():
+    number_to_guess = random.randint(1, 20)
+    guess = None
+    attempts = 0
+
+    print("Witaj w grze Zgadywanie Liczby!")
+    print("Spróbuj odgadnąć liczbę od 1 do 20.")
+
+    while guess != number_to_guess:
+        try:
+            guess = int(input("Podaj swoją próbę: "))
+            attempts += 1
+
+            if guess < number_to_guess:
+                print("Za mało! Spróbuj ponownie.")
+            elif guess > number_to_guess:
+                print("Za dużo! Spróbuj ponownie.")
+            else:
+                print(f"Gratulacje! Odgadłeś liczbę w {attempts} próbach!")
+        except ValueError:
+            print("Proszę podać prawidłową liczbę całkowitą.")
+
+if __name__ == "__main__":
+    main()
